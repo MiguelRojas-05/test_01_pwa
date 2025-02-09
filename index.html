@@ -37,11 +37,39 @@
     #install-button:hover {
       background-color: #0056b3;
     }
+    @keyframes floatingHearts {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  50% { transform: translateY(-50px) scale(1.2); opacity: 0.8; }
+  100% { transform: translateY(-100px) scale(0.8); opacity: 0; }
+}
+
+.valentine-animation {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff4d6d;
+  position: relative;
+  margin-top: 50px;
+}
+
+.heart {
+  position: absolute;
+  color: #ff4d6d;
+  font-size: 2rem;
+  animation: floatingHearts 3s infinite;
+}
+
+.heart:nth-child(1) { left: 10%; animation-duration: 3s; }
+.heart:nth-child(2) { left: 30%; animation-duration: 2.5s; }
+.heart:nth-child(3) { left: 50%; animation-duration: 3.2s; }
+.heart:nth-child(4) { left: 70%; animation-duration: 2.8s; }
+.heart:nth-child(5) { left: 90%; animation-duration: 3.5s; }
+
   </style>
 </head>
 <body>
   <h1>Bienvenido a mi PWA</h1>
-  <div id="animation"></div>
+  <div id="animation" class="valentine-animation"></div>
   <div id="message"></div>
   <button id="install-button">Instalar PWA</button>
 </body>

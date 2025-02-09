@@ -6,36 +6,50 @@ if ("serviceWorker" in navigator) {
 
 // Detectar si la aplicación está instalada como PWA
 function isPWAInstalled() {
-    // Verificar si está en modo "standalone" o "fullscreen"
-    if (window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone) {
-        return true; // Está instalada como PWA
-    }
-    return false; // No está instalada
+    return window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
+}
+
+// Crear corazones animados
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    document.getElementById("animation").appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 3000);
+}
+
+// Mostrar animación de San Valentín
+function showValentineAnimation() {
+    const animation = document.getElementById("animation");
+    animation.innerHTML = "💖 ¡Feliz San Valentín! 💖";
+
+    setInterval(createHeart, 500);
 }
 
 // Mostrar mensajes y animaciones según el estado
 document.addEventListener("DOMContentLoaded", () => {
     const animation = document.getElementById("animation");
     const message = document.getElementById("message");
+    const installButton = document.getElementById("install-button");
 
     if (isPWAInstalled()) {
-        // Mostrar animación si está instalada como PWA
-        animation.textContent = "🌟 Animación: Bienvenido a la PWA!";
-        message.textContent = ""; // No mostrar mensaje de instalación
+        showValentineAnimation();
+        message.textContent = "";
     } else {
-        // Mostrar mensaje para invitar a instalar
         animation.textContent = "";
         message.textContent = "💡 Para aprovechar al máximo esta app, instálala como PWA.";
     }
 
     // Detectar si el usuario intenta instalar la app
     window.addEventListener("beforeinstallprompt", (event) => {
-        event.preventDefault(); // Prevenir la ventana emergente automática
-        const installButton = document.getElementById("install-button");
+        event.preventDefault();
         installButton.style.display = "block";
 
         installButton.addEventListener("click", () => {
-            event.prompt(); // Mostrar la ventana de instalación manualmente
+            event.prompt();
             event.userChoice.then((choiceResult) => {
                 if (choiceResult.outcome === "accepted") {
                     console.log("El usuario instaló la app.");
