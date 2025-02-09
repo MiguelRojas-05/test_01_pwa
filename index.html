@@ -1,28 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PWA</title>
-    <link rel="manifest" href="manifest.json">
-    <script defer src="script.js"></script>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PWA Detection</title>
+  <link rel="manifest" href="manifest.json">
+  <script defer src="script.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    #animation {
+      font-size: 2rem;
+      margin-top: 2rem;
+    }
+    #message {
+      font-size: 1.2rem;
+      color: #333;
+      margin-top: 1rem;
+    }
+    #install-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none;
+    }
+    #install-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-    <h1>Soy la primera PWA</h1>
+  <h1>Bienvenido a mi PWA</h1>
+  <div id="animation"></div>
+  <div id="message"></div>
+  <button id="install-button">Instalar PWA</button>
 </body>
 </html>
-<style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f5f5f5;
-    }
-
-    h1 {
-        font-size: 2em;
-        margin: 0;
-    }
-</style>
